@@ -42,9 +42,42 @@ class DateFormatterDecorator implements DateFormatterInterface {
   }
 
   /**
-   * Implements all other DateFormatterInterface methods by delegating to the inner service.
+   * {@inheritdoc}
    */
-  public function __call($method, $args) {
-    return call_user_func_array([$this->innerDateFormatter, $method], $args);
+  public function formatInterval($interval, $granularity = 2, $langcode = NULL)
+  {
+    return $this->innerDateFormatter->formatInterval($interval, $granularity, $langcode);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getSampleDateFormats($langcode = NULL, $timestamp = NULL, $timezone = NULL)
+  {
+    return $this->innerDateFormatter->getSampleDateFormats($langcode, $timestamp, $timezone);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function formatTimeDiffUntil($timestamp, $options = [])
+  {
+    return $this->innerDateFormatter->formatTimeDiffUntil($timestamp, $options);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function formatTimeDiffSince($timestamp, $options = [])
+  {
+    return $this->innerDateFormatter->formatTimeDiffSince($timestamp, $options);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function formatDiff($from, $to, $options = [])
+  {
+    return $this->innerDateFormatter->formatDiff($from, $to, $options);
   }
 }
