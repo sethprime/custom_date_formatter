@@ -1,0 +1,21 @@
+custom_date_formatter.settings:
+  type: config_object
+  label: 'Custom Date Formatter Settings'
+  mapping:
+    replacement_character:
+      type: string
+      label: 'Replacement character'
+      constraints:
+        length:
+          max: 1
+          min: 1
+    muhurtas:
+      type: sequence
+      label: 'Muhurtas'
+      constraints:
+        length:
+          max: 30
+          min: 30
+      sequence:
+        type: string
+        label: 'Muhurta'

@@ -1,0 +1,8 @@
+# Define the route for your custom config page
+custom_date_formatter.settings:
+  path: '/admin/config/regional/custom-date-formatter'
+  defaults:
+    _form: '\Drupal\custom_date_formatter\Form\CustomDateFormatterSettingsForm'
+    _title: 'Custom Date Formatter Settings'
+  requirements:
+    _permission: 'administer site configuration'
