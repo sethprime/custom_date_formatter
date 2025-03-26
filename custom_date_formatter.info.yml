@@ -1,0 +1,6 @@
+# custom_date_formatter/custom_date_formatter.info.yml
+name: Custom Date Formatter
+type: module
+description: Demonstrates decorating the date formatter service
+package: Custom
+core_version_requirement: ^11
