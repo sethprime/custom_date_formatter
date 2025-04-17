@@ -122,6 +122,26 @@ class DateReplacementService {
     }
   }
 
+  /**
+   * Splits a string by a delimiter and includes the delimiters in the result.
+   *
+   * Similar to PHP's native explode() function but with the enhancement of
+   * preserving the delimiter characters in the resulting array. This is useful
+   * when the separators themselves are meaningful and need to be processed.
+   *
+   * @param string $delimiter
+   *   The boundary string used for splitting.
+   * @param string $string
+   *   The input string to be split.
+   *
+   * @return array
+   *   An array containing the parts of the string with the delimiters included
+   *   as separate elements.
+   *
+   * @example
+   *   $result = explodeWithSeparators(',', 'one,two,three');
+   *   // Result: ['one', ',', 'two', ',', 'three']
+   */
   function explodeWithSeparators($delimiter, $string) {
     // If the string is empty, return an empty array
     if (empty($string)) {
@@ -160,8 +180,33 @@ class DateReplacementService {
   }
 
   /**
-   * Apply custom date formatting.
+   * Formats a date, using a date type or a custom date format string.
    *
+   * Drupal uses the PHP date() and format_date() system for formatting dates.
+   * This method provides a standardized way to format dates across the platform.
+   *
+   * @param int $timestamp
+   *   A UNIX timestamp to format.
+   * @param string $type
+   *   (optional) The format to use, one of:
+   *   - A predefined date format string name ('short', 'medium', 'long').
+   *   - The name of a custom date format, defined by a date format config entity.
+   *   - 'custom', to use $format.
+   *   Defaults to 'medium'.
+   * @param string $format
+   *   (optional) If $type is 'custom', a PHP date format string suitable for
+   *   input to date(). Use a backslash to escape ordinary text, so it does not
+   *   get interpreted as date format characters.
+   * @param string|null $timezone
+   *   (optional) Time zone identifier, as described at
+   *   https://www.php.net/manual/en/timezones.php. If NULL, the configured
+   *   site timezone is used.
+   * @param string|null $langcode
+   *   (optional) Language code to translate to. NULL (default) means to use
+   *   the user interface language.
+   *
+   * @return string
+   *   A translated date string in the requested format.
    */
   public function format($timestamp, $type = 'medium', $format = '', $timezone = null, $langcode = null) {
     if (!isset($timezone)) {
@@ -193,6 +238,7 @@ class DateReplacementService {
     $format_parts = $this->explodeWithSeparators($char_to_replace, $format);
     $formatted_date = '';
 
+    // Process the date format piecewise.
     foreach($format_parts as $date_segment) {
       if ($date_segment == $char_to_replace) {
         $formatted_date .= $replacement;
