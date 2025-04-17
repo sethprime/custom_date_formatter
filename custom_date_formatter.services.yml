@@ -1,7 +1,11 @@
 # custom_date_formatter/custom_date_formatter.services.yml
 services:
+  custom_date_formatter.date_replacement_service:
+    class: Drupal\custom_date_formatter\Service\DateReplacementService
+    arguments: ['@custom_date_formatter.decorator.inner', '@config.factory', '@language_manager', '@entity_type.manager']
+
   custom_date_formatter.decorator:
-    class: Drupal\custom_date_formatter\DateFormatterDecorator
+    class: Drupal\custom_date_formatter\Service\DateFormatterDecorator
     decorates: date.formatter
     decoration_priority: 10
-    arguments: ['@custom_date_formatter.decorator.inner']
+    arguments: ['@custom_date_formatter.decorator.inner', '@custom_date_formatter.date_replacement_service']

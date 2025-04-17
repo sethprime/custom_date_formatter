@@ -1,9 +1,9 @@
 <?php
 
-namespace Drupal\custom_date_formatter;
+namespace Drupal\custom_date_formatter\Service;
 
 use Drupal\Core\Datetime\DateFormatterInterface;
-use Drupal\Core\Datetime\DrupalDateTime;
+use Drupal\custom_date_formatter\Service\DateReplacementService;
 
 /**
  * Decorates the date formatter service.
@@ -18,27 +18,32 @@ class DateFormatterDecorator implements DateFormatterInterface {
   protected $innerDateFormatter;
 
   /**
+   * The custom date formatter service.
+   *
+   * @var \Drupal\custom_date_formatter\Service\DateReplacementService
+   */
+  protected $customFormatter;
+
+  /**
    * Constructs a new DateFormatterDecorator.
    *
    * @param \Drupal\Core\Datetime\DateFormatterInterface $inner_date_formatter
    *   The inner date formatter service.
+   *
+   * @param \Drupal\custom_date_formatter\Service\DateReplacementService $custom_formatter
+   *   The custom date formatter service.
    */
-  public function __construct(DateFormatterInterface $inner_date_formatter) {
+  public function __construct(DateFormatterInterface $inner_date_formatter,
+    DateReplacementService $custom_formatter) {
     $this->innerDateFormatter = $inner_date_formatter;
+    $this->customFormatter = $custom_formatter;
   }
 
   /**
    * {@inheritdoc}
    */
   public function format($timestamp, $type = 'medium', $format = '', $timezone = null, $langcode = null) {
-    // Example of adding custom logic before formatting
-    if ($type === 'custom_format') {
-      // Custom formatting logic
-      return "Custom: " . $this->innerDateFormatter->format($timestamp, 'long', $format, $timezone, $langcode);
-    }
-
-    // For other cases, use the inner date formatter
-    return $this->innerDateFormatter->format($timestamp, $type, $format, $timezone, $langcode);
+    return $this->customFormatter->format($timestamp, $type, $format, $timezone, $langcode);
   }
 
   /**

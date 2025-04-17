@@ -101,10 +101,10 @@ class CustomDateFormatterSettingsForm extends ConfigFormBase {
     for ($i = 0; $i < self::STRING_ARRAY_SIZE; $i++) {
       $form['muhurtas'][$i] = [
         '#type' => 'textfield',
-        '#title' => $this->t('Muhurta @num ', ['@num' => $i + 1]),
+        '#title' => $this->t('Muhurta @num (@muhurta)', ['@num' => $i + 1,'@muhurta' => self::MUHURTAS[$i]]),
         '#default_value' => $muhurtas[$i],
         '#attributes' => [
-          'placeholder' => $this->t('Enter muhurta name @num', ['@num' => $i + 1]),
+          'placeholder' => $this->t('Override @muhurta', ['@muhurta' => self::MUHURTAS[$i]]),
         ],
       ];
     }
