@@ -1,9 +1,9 @@
 <?php
 
-namespace Drupal\custom_date_formatter\Service;
+namespace Drupal\date_formatter_vedic\Service;
 
 use Drupal\Core\Datetime\DateFormatterInterface;
-use Drupal\custom_date_formatter\Service\DateReplacementService;
+use Drupal\date_formatter_vedic\Service\DateReplacementService;
 
 /**
  * Decorates the date formatter service.
@@ -20,7 +20,7 @@ class DateFormatterDecorator implements DateFormatterInterface {
   /**
    * The custom date formatter service.
    *
-   * @var \Drupal\custom_date_formatter\Service\DateReplacementService
+   * @var \Drupal\date_formatter_vedic\Service\DateReplacementService
    */
   protected $customFormatter;
 
@@ -30,7 +30,7 @@ class DateFormatterDecorator implements DateFormatterInterface {
    * @param \Drupal\Core\Datetime\DateFormatterInterface $inner_date_formatter
    *   The inner date formatter service.
    *
-   * @param \Drupal\custom_date_formatter\Service\DateReplacementService $custom_formatter
+   * @param \Drupal\date_formatter_vedic\Service\DateReplacementService $custom_formatter
    *   The custom date formatter service.
    */
   public function __construct(DateFormatterInterface $inner_date_formatter,

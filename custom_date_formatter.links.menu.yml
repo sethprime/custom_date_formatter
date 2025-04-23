@@ -1,7 +1,0 @@
-# Define the menu link under Region and Language
-custom_date_formatter.admin:
-  title: 'Custom Date Formatter'
-  description: 'Configure the values for the custom date format parameter.'
-  parent: system.admin_config_regional
-  route_name: custom_date_formatter.settings
-  weight: 10

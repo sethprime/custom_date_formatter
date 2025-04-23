@@ -1,0 +1,6 @@
+name: Vedic Date Formatter
+type: module
+description: Provides a customizable PHP date format character for the muhūrta.
+package: Custom
+core_version_requirement: ^11
+version: 11.x-0.9

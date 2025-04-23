@@ -1,6 +1,6 @@
-custom_date_formatter.settings:
+date_formatter_vedic.settings:
   type: config_object
-  label: 'Custom Date Formatter Settings'
+  label: 'Vedic Date Formatter Settings'
   mapping:
     replacement_character:
       type: string

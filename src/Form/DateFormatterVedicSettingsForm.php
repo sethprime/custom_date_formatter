@@ -1,14 +1,14 @@
 <?php
 
-namespace Drupal\custom_date_formatter\Form;
+namespace Drupal\date_formatter_vedic\Form;
 
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
- * Configure custom_date_formatter settings.
+ * Configure date_formatter_vedic settings.
  */
-class CustomDateFormatterSettingsForm extends ConfigFormBase {
+class DateFormatterVedicSettingsForm extends ConfigFormBase {
   /**
    * Total number of string fields.
    */
@@ -59,21 +59,21 @@ class CustomDateFormatterSettingsForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   public function getFormId() {
-    return 'custom_date_formatter_settings';
+    return 'date_formatter_vedic_settings';
   }
 
   /**
    * {@inheritdoc}
    */
   protected function getEditableConfigNames() {
-    return ['custom_date_formatter.settings'];
+    return ['date_formatter_vedic.settings'];
   }
 
   /**
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-    $config = $this->config('custom_date_formatter.settings');
+    $config = $this->config('date_formatter_vedic.settings');
 
     // Character input field
     $form['replacement_character'] = [
@@ -131,7 +131,7 @@ class CustomDateFormatterSettingsForm extends ConfigFormBase {
     $muhurtas = array_pad(array_slice($muhurtas, 0, self::STRING_ARRAY_SIZE), self::STRING_ARRAY_SIZE, '');
 
     // Save configuration
-    $this->config('custom_date_formatter.settings')
+    $this->config('date_formatter_vedic.settings')
       ->set('replacement_character', $form_state->getValue('replacement_character'))
       ->set('muhurtas', $muhurtas)
       ->save();
@@ -144,7 +144,7 @@ class CustomDateFormatterSettingsForm extends ConfigFormBase {
    */
   public function submitFormReset(array &$form, FormStateInterface $form_state) {
 
-    $this->config('custom_date_formatter.settings')
+    $this->config('date_formatter_vedic.settings')
       ->set('replacement_character', self::DEFAULT_CHARACTER)
       ->set('muhurtas', self::MUHURTAS)
       ->save();

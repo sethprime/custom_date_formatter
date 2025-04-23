@@ -1,0 +1,10 @@
+services:
+  date_formatter_vedic.date_replacement_service:
+    class: Drupal\date_formatter_vedic\Service\DateReplacementService
+    arguments: ['@date_formatter_vedic.decorator.inner', '@config.factory', '@language_manager', '@entity_type.manager']
+
+  date_formatter_vedic.decorator:
+    class: Drupal\date_formatter_vedic\Service\DateFormatterDecorator
+    decorates: date.formatter
+    decoration_priority: 10
+    arguments: ['@date_formatter_vedic.decorator.inner', '@date_formatter_vedic.date_replacement_service']

@@ -1,0 +1,7 @@
+date_formatter_vedic.settings:
+  path: '/admin/config/regional/vedic-date-formatter'
+  defaults:
+    _form: '\Drupal\date_formatter_vedic\Form\DateFormatterVedicSettingsForm'
+    _title: 'Vedic Date Formatter Settings'
+  requirements:
+    _permission: 'administer site configuration'

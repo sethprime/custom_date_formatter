@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\custom_date_formatter\Service;
+namespace Drupal\date_formatter_vedic\Service;
 
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Datetime\DateFormatterInterface;
@@ -70,7 +70,7 @@ class DateReplacementService {
    *   The character to replace.
    */
   public function getCharacterToReplace() {
-    return $this->configFactory->get('custom_date_formatter.settings')->get('replacement_character') ?: '@';
+    return $this->configFactory->get('date_formatter_vedic.settings')->get('replacement_character') ?: '@';
   }
 
   /**
@@ -83,7 +83,7 @@ class DateReplacementService {
    *   The replacement string.
    */
   public function calculateReplacement(DrupalDateTime $date) {
-    $config = $this->configFactory->get('custom_date_formatter.settings');
+    $config = $this->configFactory->get('date_formatter_vedic.settings');
     $muhurtas = $config->get('muhurtas') ?: [];
 
     // Get the DateTimeZone object.

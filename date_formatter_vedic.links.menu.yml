@@ -1,0 +1,6 @@
+date_formatter_vedic.admin:
+  title: 'Vedic Date Formatter'
+  description: 'Configure the values for the vedic date format parameter.'
+  parent: system.admin_config_regional
+  route_name: date_formatter_vedic.settings
+  weight: 10
