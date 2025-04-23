@@ -1,21 +1,21 @@
 date_formatter_vedic.settings:
   type: config_object
-  label: 'Vedic Date Formatter Settings'
+  label: "Vedic Date Formatter Settings"
   mapping:
     replacement_character:
       type: string
-      label: 'Replacement character'
+      label: "Replacement character"
       constraints:
         length:
           max: 1
           min: 1
     muhurtas:
       type: sequence
-      label: 'Muhurtas'
+      label: "Muhūrtas"
       constraints:
         length:
           max: 30
           min: 30
       sequence:
         type: string
-        label: 'Muhurta'
+        label: "Muhūrta"

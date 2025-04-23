@@ -1,0 +1,14 @@
+{
+    "name": "drupal/date_formatter_vedic",
+    "description": "Provides a customizable PHP date format character for the muhūrta.",
+    "type": "drupal-module",
+    "license": "GPL-2.0-or-later",
+    "minimum-stability": "dev",
+    "require": {
+        "drupal/core": "^11"
+    },
+    "support": {
+        "issues": "https://www.drupal.org/project/issues/date_formatter_vedic",
+        "source": "https://git.drupalcode.org/project/date_formatter_vedic"
+    }
+}
